@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chain Reaction — App Mockup</title>
+  <title>Chain Reaction — App Mockup v2</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -30,6 +30,7 @@
             'amber-400': '#fbbf24',
             'blue-500': '#3b82f6',
             'blue-400': '#60a5fa',
+            'purple-400': '#a78bfa',
           }
         }
       }
@@ -77,6 +78,7 @@
       flex: 1;
       overflow: hidden;
       flex-direction: column;
+      min-height: 0;
     }
     .screen.active {
       display: flex;
@@ -87,6 +89,7 @@
       overflow-x: hidden;
       scrollbar-width: thin;
       scrollbar-color: #334155 transparent;
+      min-height: 0;
     }
     .screen-content::-webkit-scrollbar { width: 4px; }
     .screen-content::-webkit-scrollbar-track { background: transparent; }
@@ -116,14 +119,14 @@
       cursor: pointer;
     }
     .card-hover { transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .metric-value { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+    .metric-value { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; }
     .metric-label { font-size: 11px; font-weight: 500; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; }
     .sub-panel {
       background: rgba(15,23,42,0.6);
       border-top: 1px solid #334155;
-      padding: 6px 10px;
+      padding: 7px 12px;
     }
-    .sub-value { font-size: 16px; font-weight: 700; }
+    .sub-value { font-size: 17px; font-weight: 700; }
     .sub-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
     .zone-bar {
       width: 6px;
@@ -143,7 +146,7 @@
     }
     .ctrl-btn {
       border-radius: 10px;
-      padding: 8px 0;
+      padding: 9px 0;
       font-size: 11px;
       font-weight: 600;
       display: flex;
@@ -177,8 +180,8 @@
       transition: color 0.15s;
     }
     .tab-item.active { color: #60a5fa; }
-    .tab-item i { font-size: 18px; }
-    .tab-item span { font-size: 10px; font-weight: 500; }
+    .tab-item i { font-size: 17px; }
+    .tab-item span { font-size: 9px; font-weight: 500; }
     .top-bar {
       display: flex;
       align-items: center;
@@ -220,21 +223,6 @@
       cursor: pointer;
       border: none;
     }
-    .btn-red {
-      background: #be123c;
-      color: #fff;
-      padding: 10px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
     .lap-row { display: flex; align-items: center; padding: 8px 12px; border-bottom: 1px solid rgba(51,65,85,0.5); }
     .lap-row:last-child { border-bottom: none; }
     .lap-row:nth-child(odd) { background: rgba(51,65,85,0.2); }
@@ -247,7 +235,7 @@
       padding: 14px 16px;
       border-bottom: 1px solid rgba(51,65,85,0.5);
     }
-    .settings-label { font-size: 13px; color: #cbd5e1; font-weight: 500; flex: 1; }
+    .settings-label { font-size: 13px; color: #cbd5e1; font-weight: 500; }
     .settings-input {
       background: #0f172a;
       border: 1px solid #334155;
@@ -265,11 +253,11 @@
       border: 1px solid #334155;
       border-radius: 8px;
       color: #e2e8f0;
-      font-size: 12px;
+      font-size: 11px;
       padding: 6px 8px;
       font-family: 'Inter', sans-serif;
       outline: none;
-      width: 160px;
+      width: 158px;
     }
     .toggle-switch {
       width: 44px; height: 24px;
@@ -278,6 +266,7 @@
       position: relative;
       cursor: pointer;
       transition: background 0.2s;
+      flex-shrink: 0;
     }
     .toggle-switch.on { background: #3b82f6; }
     .toggle-switch::after {
@@ -344,7 +333,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
     .quick-icon {
-      width: 36px; height: 36px;
+      width: 38px; height: 38px;
       border-radius: 10px;
       background: rgba(51,65,85,0.6);
       display: flex; align-items: center; justify-content: center;
@@ -354,18 +343,144 @@
     .quick-icon:hover { background: #334155; }
     .quick-icon i { font-size: 15px; color: #94a3b8; }
     .swap-icon { font-size: 12px; color: #94a3b8; cursor: pointer; margin-left: 4px; }
+
+    /* Segmented toggle for appearance */
+    .seg-toggle {
+      display: flex;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .seg-btn {
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: background 0.15s, color 0.15s;
+    }
+    .seg-btn.active {
+      background: #1d4ed8;
+      color: #e2e8f0;
+    }
+
+    /* Achievement badges */
+    .badge-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.15s;
+    }
+    .badge-card.locked {
+      opacity: 0.45;
+    }
+    .badge-card.earned {
+      border-color: rgba(167,139,250,0.4);
+      background: rgba(167,139,250,0.07);
+    }
+    .badge-earned-check {
+      position: absolute;
+      top: 5px; right: 5px;
+      width: 16px; height: 16px;
+      background: #10b981;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px;
+      color: white;
+    }
+    .badge-lock-icon {
+      position: absolute;
+      top: 5px; right: 5px;
+      font-size: 10px;
+      color: #475569;
+    }
+    .badge-series-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+    .series-badge {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .series-badge.earned {
+      background: rgba(167,139,250,0.15);
+      border: 1px solid rgba(167,139,250,0.3);
+    }
+    .series-badge.locked {
+      background: #0f172a;
+      border: 1px solid #334155;
+      opacity: 0.4;
+    }
+    .lifetime-stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+
+    /* Dashboard fill screen */
+    #screen-dashboard .screen-content {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 8px;
+    }
+    #screen-dashboard .metric-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      min-height: 0;
+    }
+    #screen-dashboard .metric-grid .card {
+      display: flex;
+      flex-direction: column;
+    }
+    #screen-dashboard .metric-grid .card .card-inner {
+      flex: 1;
+      padding: 12px 12px 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    #screen-dashboard .metric-grid .card .card-inner .metric-value {
+      font-size: 38px;
+    }
   </style>
 </head>
 <body>
   <!-- Page header -->
   <div style="text-align:center; margin-bottom: 1.5rem; max-width: 500px;">
     <h1 style="color:#e2e8f0; font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:0.4rem;">
-      <i class="fa-solid fa-link" style="color:#60a5fa; margin-right:8px;"></i>Chain Reaction — App Mockup
+      <i class="fa-solid fa-link" style="color:#60a5fa; margin-right:8px;"></i>Chain Reaction — App Mockup v2
     </h1>
     <p style="color:#64748b; font-size:0.85rem; line-height:1.5;">
       Interactive high-fidelity prototype. Use the bottom tabs to switch screens.<br>
       Tap the <strong style="color:#e2e8f0;">Duration card</strong> to toggle lap/total view.
-      Tap <strong style="color:#e2e8f0;">"View your 5 zones"</strong> in Settings for the HR overlay.
+      Tap <strong style="color:#e2e8f0;">"View your 5 zones"</strong> in Settings for the HR overlay.<br>
+      <strong style="color:#a78bfa;">New:</strong> Awards tab for achievements &amp; lifetime stats.
     </p>
   </div>
 
@@ -404,19 +519,20 @@
         </div>
       </div>
 
-      <!-- Metric Cards Grid -->
-      <div class="screen-content" style="padding: 10px;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+      <!-- Metric Cards Grid — fills all available space -->
+      <div class="screen-content">
+        <div class="metric-grid">
 
           <!-- Card 1: Duration -->
           <div class="card card-hover" id="duration-card" onclick="toggleDurationMode()" style="position:relative;">
-            <div style="padding: 10px 10px 8px;">
-              <div style="display:flex; align-items:center; margin-bottom:4px;">
+            <div class="card-inner">
+              <div style="display:flex; align-items:center; margin-bottom:5px;">
                 <span class="metric-label" id="duration-main-label">Total Duration</span>
                 <i class="fa-solid fa-arrows-left-right swap-icon" style="margin-left:5px;"></i>
               </div>
               <div class="mono metric-value" id="duration-main-value" style="color:#34d399; line-height:1;">24:36</div>
-              <div style="display:flex; align-items:center; gap:5px; margin-top:5px;">
+              <div style="font-size:10px; color:#e2e8f0; margin-top:2px;">H:MM:SS</div>
+              <div style="display:flex; align-items:center; gap:5px; margin-top:auto; padding-top:6px;">
                 <span class="pulse-dot"></span>
                 <span style="font-size:10px; color:#34d399; font-weight:600;">Tracking</span>
               </div>
@@ -429,19 +545,19 @@
 
           <!-- Card 2: Heart Rate -->
           <div class="card" style="position:relative;">
-            <div style="padding: 10px 10px 8px;">
-              <div class="metric-label" style="margin-bottom:4px;">Heart Rate</div>
-              <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div class="card-inner">
+              <div class="metric-label" style="margin-bottom:5px;">Heart Rate</div>
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; flex:1;">
                 <div>
                   <div class="mono metric-value" style="color:#f43f5e; line-height:1;">156</div>
-                  <div style="font-size:10px; color:#e2e8f0; margin-top:1px;">BPM</div>
-                  <div style="margin-top:4px;">
-                    <span style="font-size:13px; font-weight:700; color:#fbbf24;">Zone 4</span>
+                  <div style="font-size:10px; color:#e2e8f0; margin-top:2px;">BPM</div>
+                  <div style="margin-top:6px;">
+                    <span style="font-size:14px; font-weight:700; color:#fbbf24;">Zone 4</span>
                     <div style="font-size:10px; color:#94a3b8;">Anaerobic</div>
                   </div>
                 </div>
                 <!-- Zone bars -->
-                <div style="display:flex; align-items:flex-end; gap:3px; height:56px;">
+                <div style="display:flex; align-items:flex-end; gap:3px; height:64px; align-self:flex-start; margin-top:4px;">
                   <div class="zone-bar" style="height:20%; background:#94a3b8;"></div>
                   <div class="zone-bar" style="height:40%; background:#60a5fa;"></div>
                   <div class="zone-bar" style="height:60%; background:#34d399;"></div>
@@ -458,14 +574,14 @@
 
           <!-- Card 3: Power -->
           <div class="card">
-            <div style="padding: 10px 10px 8px;">
-              <div class="metric-label" style="margin-bottom:4px;">Power (Est)</div>
+            <div class="card-inner">
+              <div class="metric-label" style="margin-bottom:5px;">Power (Est)</div>
               <div class="mono metric-value" style="color:#fbbf24; line-height:1;">187</div>
-              <div style="font-size:10px; color:#e2e8f0; margin-top:1px;">WATTS</div>
-              <div class="progress-bar-bg" style="margin-top:7px;">
+              <div style="font-size:10px; color:#e2e8f0; margin-top:2px;">WATTS</div>
+              <div class="progress-bar-bg" style="margin-top:auto; margin-bottom:2px;">
                 <div class="progress-bar-fill" style="width:37.4%; background:#fbbf24;"></div>
               </div>
-              <div style="font-size:9px; color:#64748b; margin-top:2px; text-align:right;">500W max</div>
+              <div style="font-size:9px; color:#64748b; text-align:right;">500W max</div>
             </div>
             <div class="sub-panel">
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
@@ -483,14 +599,14 @@
 
           <!-- Card 4: Cadence -->
           <div class="card">
-            <div style="padding: 10px 10px 8px;">
-              <div class="metric-label" style="margin-bottom:4px;">Cadence</div>
+            <div class="card-inner">
+              <div class="metric-label" style="margin-bottom:5px;">Cadence</div>
               <div class="mono metric-value" style="color:#60a5fa; line-height:1;">82</div>
-              <div style="font-size:10px; color:#e2e8f0; margin-top:1px;">RPM</div>
-              <div class="progress-bar-bg" style="margin-top:7px;">
+              <div style="font-size:10px; color:#e2e8f0; margin-top:2px;">RPM</div>
+              <div class="progress-bar-bg" style="margin-top:auto; margin-bottom:2px;">
                 <div class="progress-bar-fill" style="width:63%; background:#60a5fa;"></div>
               </div>
-              <div style="font-size:9px; color:#64748b; margin-top:2px; text-align:right;">130 RPM max</div>
+              <div style="font-size:9px; color:#64748b; text-align:right;">130 RPM max</div>
             </div>
             <div class="sub-panel">
               <div class="sub-label" id="cadence-sub-label">Avg RPM</div>
@@ -500,7 +616,7 @@
         </div>
 
         <!-- Bottom Control Bar -->
-        <div class="card" style="padding: 10px 8px 8px;">
+        <div class="card" style="padding: 10px 8px 8px; flex-shrink: 0;">
           <!-- Session control buttons -->
           <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px; margin-bottom:8px;">
             <button class="ctrl-btn disabled" style="background:rgba(16,185,129,0.1); color:#10b981;">
@@ -521,7 +637,7 @@
             </button>
           </div>
           <!-- Quick action icons -->
-          <div style="display:flex; justify-content:space-around; padding-top:4px; border-top:1px solid #334155;">
+          <div style="display:flex; justify-content:space-around; padding-top:6px; border-top:1px solid #334155;">
             <div class="quick-icon" title="BLE Bike">
               <i class="fa-brands fa-bluetooth" style="color:#60a5fa;"></i>
             </div>
@@ -785,18 +901,19 @@
             <i class="fa-solid fa-user" style="color:#60a5fa; font-size:14px; width:18px;"></i>
             <span class="settings-label">User Age</span>
           </div>
-          <input type="number" class="settings-input" value="43" min="15" max="99" />
+          <input type="number" class="settings-input" value="43" min="15" max="99" id="ageInput" onchange="updateZones()" />
         </div>
 
-        <!-- HR Zone Method -->
+        <!-- HR Zone Method — includes Tanaka, default Tanaka -->
         <div class="settings-row">
           <div style="display:flex; align-items:center; gap:8px; flex:1;">
             <i class="fa-solid fa-heart" style="color:#f43f5e; font-size:14px; width:18px;"></i>
             <span class="settings-label">HR Zone Method</span>
           </div>
-          <select class="settings-select" id="hrMethodSelect" onchange="updateRHRVisibility()">
-            <option value="traditional" selected>Traditional (220 - Age)</option>
-            <option value="karvonen">Karvonen</option>
+          <select class="settings-select" id="hrMethodSelect" onchange="updateRHRVisibility(); updateZones();">
+            <option value="traditional">Traditional (220 − Age)</option>
+            <option value="tanaka" selected>Tanaka (208 − 0.7 × Age)</option>
+            <option value="karvonen">Karvonen (HR Reserve)</option>
           </select>
         </div>
 
@@ -809,16 +926,31 @@
             </div>
             <span style="font-size:10px; color:#64748b; margin-left:26px; margin-top:2px;">(Only for Karvonen method)</span>
           </div>
-          <input type="number" class="settings-input" value="60" min="40" max="100" id="rhrInput" />
+          <input type="number" class="settings-input" value="60" min="40" max="100" id="rhrInput" disabled onchange="updateZones()" />
         </div>
 
-        <!-- Audio Cues -->
+        <!-- Appearance -->
         <div class="settings-row">
           <div style="display:flex; align-items:center; gap:8px; flex:1;">
-            <i class="fa-solid fa-volume-low" style="color:#94a3b8; font-size:14px; width:18px;"></i>
-            <span class="settings-label">Audio Cues</span>
+            <i class="fa-solid fa-circle-half-stroke" style="color:#fbbf24; font-size:14px; width:18px;"></i>
+            <span class="settings-label">Appearance</span>
           </div>
-          <div class="toggle-switch" id="audioToggle" onclick="this.classList.toggle('on')"></div>
+          <div class="seg-toggle">
+            <button class="seg-btn active" id="darkBtn" onclick="setAppearance('dark')">Dark</button>
+            <button class="seg-btn" id="lightBtn" onclick="setAppearance('light')">Light</button>
+          </div>
+        </div>
+
+        <!-- Large Screen Print Mode -->
+        <div class="settings-row">
+          <div style="display:flex; flex-direction:column; flex:1;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-print" style="color:#94a3b8; font-size:14px; width:18px;"></i>
+              <span class="settings-label">Large Screen Print Mode</span>
+            </div>
+            <span style="font-size:10px; color:#64748b; margin-left:26px; margin-top:2px;">Optimized layout for printing session data</span>
+          </div>
+          <div class="toggle-switch" id="printToggle" onclick="this.classList.toggle('on')"></div>
         </div>
 
         <!-- HR Zones link -->
@@ -830,23 +962,12 @@
           <span style="font-size:12px; color:#60a5fa; font-weight:500;">View your 5 zones</span>
           <i class="fa-solid fa-chevron-right" style="color:#60a5fa; font-size:12px; margin-left:5px;"></i>
         </div>
-
-        <!-- Divider -->
-        <div style="height:1px; background:#334155; margin: 12px 16px;"></div>
-
-        <!-- Clear history -->
-        <div style="padding: 0 16px 20px;">
-          <button class="btn-red">
-            <i class="fa-solid fa-trash"></i>
-            Clear All History
-          </button>
-        </div>
       </div>
 
       <!-- HR Zones Overlay (bottom sheet on settings) -->
       <div class="overlay-backdrop" id="hrZonesOverlay" onclick="handleOverlayClick(event)">
         <div class="overlay-panel" id="hrZonesPanel">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
             <div style="display:flex; align-items:center; gap:8px;">
               <i class="fa-solid fa-heart-pulse" style="color:#f43f5e; font-size:16px;"></i>
               <span style="color:#e2e8f0; font-size:15px; font-weight:700;">Your Target Zones</span>
@@ -856,59 +977,205 @@
             </div>
           </div>
 
-          <!-- Zone rows -->
-          <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="zone-circle" style="background:rgba(148,163,184,0.2); color:#94a3b8;">1</div>
-              <div style="flex:1;">
-                <div style="font-size:13px; font-weight:600; color:#94a3b8;">Recovery</div>
-                <div style="font-size:10px; color:#64748b;">50–60%</div>
-              </div>
-              <div class="mono" style="font-size:13px; font-weight:700; color:#94a3b8;">89–106 BPM</div>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="zone-circle" style="background:rgba(96,165,250,0.2); color:#60a5fa;">2</div>
-              <div style="flex:1;">
-                <div style="font-size:13px; font-weight:600; color:#60a5fa;">Endurance</div>
-                <div style="font-size:10px; color:#64748b;">60–70%</div>
-              </div>
-              <div class="mono" style="font-size:13px; font-weight:700; color:#60a5fa;">106–124 BPM</div>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="zone-circle" style="background:rgba(52,211,153,0.2); color:#34d399;">3</div>
-              <div style="flex:1;">
-                <div style="font-size:13px; font-weight:600; color:#34d399;">Aerobic</div>
-                <div style="font-size:10px; color:#64748b;">70–80%</div>
-              </div>
-              <div class="mono" style="font-size:13px; font-weight:700; color:#34d399;">124–142 BPM</div>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="zone-circle" style="background:rgba(251,191,36,0.2); color:#fbbf24;">4</div>
-              <div style="flex:1;">
-                <div style="font-size:13px; font-weight:600; color:#fbbf24;">Anaerobic</div>
-                <div style="font-size:10px; color:#64748b;">80–90%</div>
-              </div>
-              <div class="mono" style="font-size:13px; font-weight:700; color:#fbbf24;">142–159 BPM</div>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="zone-circle" style="background:rgba(244,63,94,0.2); color:#f43f5e;">5</div>
-              <div style="flex:1;">
-                <div style="font-size:13px; font-weight:600; color:#f43f5e;">Max Effort</div>
-                <div style="font-size:10px; color:#64748b;">90–100%</div>
-              </div>
-              <div class="mono" style="font-size:13px; font-weight:700; color:#f43f5e;">159–177 BPM</div>
-            </div>
+          <!-- Method badge -->
+          <div style="margin-bottom:12px;">
+            <span id="methodBadge" style="font-size:10px; font-weight:600; color:#60a5fa; background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.25); border-radius:6px; padding:3px 8px;"></span>
+          </div>
+
+          <!-- Zone rows — dynamically populated -->
+          <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;" id="zoneRows">
+            <!-- populated by JS -->
           </div>
 
           <div style="font-size:10px; color:#64748b; text-align:center; border-top:1px solid #334155; padding-top:10px;">
-            Calculated based on your current Age and Method in Settings.
+            Calculated from Age and HR Zone Method in Settings.
           </div>
         </div>
       </div>
     </div>
     <!-- END SETTINGS -->
 
-    <!-- Bottom Tab Bar -->
+    <!-- ===== SCREEN 6: ACHIEVEMENTS ===== -->
+    <div class="screen" id="screen-awards">
+      <div class="top-bar">
+        <i class="fa-solid fa-trophy" style="color:#a78bfa; font-size:16px; margin-right:8px;"></i>
+        <span style="color:#e2e8f0; font-size:15px; font-weight:700;">Awards</span>
+      </div>
+      <div class="screen-content" style="padding: 10px;">
+
+        <!-- Lifetime Stats -->
+        <div style="font-size:10px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:7px;">Lifetime Stats</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+          <div class="lifetime-stat-card">
+            <i class="fa-solid fa-bicycle" style="color:#60a5fa; font-size:18px;"></i>
+            <div class="mono" style="font-size:22px; font-weight:700; color:#e2e8f0; line-height:1;">47</div>
+            <div style="font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:0.06em;">Total Rides</div>
+          </div>
+          <div class="lifetime-stat-card">
+            <i class="fa-solid fa-stopwatch" style="color:#34d399; font-size:18px;"></i>
+            <div class="mono" style="font-size:22px; font-weight:700; color:#e2e8f0; line-height:1;">24h 36m</div>
+            <div style="font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:0.06em;">Total Duration</div>
+          </div>
+          <div class="lifetime-stat-card">
+            <i class="fa-solid fa-fire-flame-curved" style="color:#fbbf24; font-size:18px;"></i>
+            <div class="mono" style="font-size:22px; font-weight:700; color:#e2e8f0; line-height:1;">12,450</div>
+            <div style="font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:0.06em;">Total Calories</div>
+          </div>
+          <div class="lifetime-stat-card">
+            <i class="fa-solid fa-road" style="color:#a78bfa; font-size:18px;"></i>
+            <div class="mono" style="font-size:22px; font-weight:700; color:#e2e8f0; line-height:1;">385 km</div>
+            <div style="font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:0.06em;">Est. Distance</div>
+          </div>
+        </div>
+
+        <!-- Badge Series -->
+        <div style="font-size:10px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:7px;">Badge Series</div>
+
+        <!-- Series 1: Ride Streak -->
+        <div class="badge-series-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+            <span style="font-size:13px; font-weight:700; color:#e2e8f0;">🔥 Ride Streak</span>
+            <span style="font-size:10px; color:#64748b;">2 of 4 earned</span>
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:8px;">
+            <div class="series-badge earned" title="3-Day Streak — Earned">
+              <span style="font-size:16px;">🔥</span>
+            </div>
+            <div class="series-badge earned" title="7-Day Streak — Earned">
+              <span style="font-size:16px;">🔥</span>
+            </div>
+            <div class="series-badge locked" title="14-Day Streak — Locked">
+              <span style="font-size:16px; filter:grayscale(1);">🔥</span>
+            </div>
+            <div class="series-badge locked" title="30-Day Streak — Locked">
+              <span style="font-size:16px; filter:grayscale(1);">🔥</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-left:4px; gap:3px;">
+              <div style="font-size:10px; color:#94a3b8;">3d · 7d · 14d · 30d</div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:50%; background:#f97316;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Series 2: Power House -->
+        <div class="badge-series-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+            <span style="font-size:13px; font-weight:700; color:#e2e8f0;">⚡ Power House</span>
+            <span style="font-size:10px; color:#64748b;">2 of 4 earned</span>
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:8px;">
+            <div class="series-badge earned" title="100W Club — Earned">
+              <span style="font-size:16px;">⚡</span>
+            </div>
+            <div class="series-badge earned" title="200W Club — Earned">
+              <span style="font-size:16px;">⚡</span>
+            </div>
+            <div class="series-badge locked" title="300W Club — Locked">
+              <span style="font-size:16px; filter:grayscale(1);">⚡</span>
+            </div>
+            <div class="series-badge locked" title="500W Club — Locked">
+              <span style="font-size:16px; filter:grayscale(1);">⚡</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-left:4px; gap:3px;">
+              <div style="font-size:10px; color:#94a3b8;">100W · 200W · 300W · 500W</div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:50%; background:#fbbf24;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Series 3: Endurance -->
+        <div class="badge-series-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+            <span style="font-size:13px; font-weight:700; color:#e2e8f0;">🏔️ Endurance</span>
+            <span style="font-size:10px; color:#64748b;">3 of 5 earned</span>
+          </div>
+          <div style="display:flex; gap:5px; margin-bottom:8px;">
+            <div class="series-badge earned" title="15 Min — Earned">
+              <span style="font-size:14px;">🏔️</span>
+            </div>
+            <div class="series-badge earned" title="30 Min — Earned">
+              <span style="font-size:14px;">🏔️</span>
+            </div>
+            <div class="series-badge earned" title="45 Min — Earned">
+              <span style="font-size:14px;">🏔️</span>
+            </div>
+            <div class="series-badge locked" title="60 Min — Locked">
+              <span style="font-size:14px; filter:grayscale(1);">🏔️</span>
+            </div>
+            <div class="series-badge locked" title="90 Min — Locked">
+              <span style="font-size:14px; filter:grayscale(1);">🏔️</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-left:4px; gap:3px;">
+              <div style="font-size:10px; color:#94a3b8;">15 · 30 · 45 · 60 · 90 min</div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:60%; background:#34d399;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Standalone Badges -->
+        <div style="font-size:10px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:7px; margin-top:4px;">Achievements</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:10px;">
+
+          <!-- Earned -->
+          <div class="badge-card earned">
+            <div class="badge-earned-check"><i class="fa-solid fa-check" style="font-size:7px;"></i></div>
+            <div style="font-size:26px; margin-bottom:4px;">🎯</div>
+            <div style="font-size:10px; font-weight:700; color:#e2e8f0; line-height:1.2;">First Ride</div>
+            <div style="font-size:9px; color:#64748b; margin-top:2px; line-height:1.3;">Complete your first session</div>
+          </div>
+
+          <!-- Earned -->
+          <div class="badge-card earned">
+            <div class="badge-earned-check"><i class="fa-solid fa-check" style="font-size:7px;"></i></div>
+            <div style="font-size:26px; margin-bottom:4px;">🌅</div>
+            <div style="font-size:10px; font-weight:700; color:#e2e8f0; line-height:1.2;">Early Bird</div>
+            <div style="font-size:9px; color:#64748b; margin-top:2px; line-height:1.3;">Start a ride before 6 AM</div>
+          </div>
+
+          <!-- Locked -->
+          <div class="badge-card locked">
+            <div class="badge-lock-icon"><i class="fa-solid fa-lock"></i></div>
+            <div style="font-size:26px; margin-bottom:4px; filter:grayscale(1);">💀</div>
+            <div style="font-size:10px; font-weight:700; color:#475569; line-height:1.2;">Zone 5 Survivor</div>
+            <div style="font-size:9px; color:#334155; margin-top:2px; line-height:1.3;">5+ min in Zone 5</div>
+          </div>
+
+          <!-- Locked -->
+          <div class="badge-card locked">
+            <div class="badge-lock-icon"><i class="fa-solid fa-lock"></i></div>
+            <div style="font-size:26px; margin-bottom:4px; filter:grayscale(1);">🔥</div>
+            <div style="font-size:10px; font-weight:700; color:#475569; line-height:1.2;">Calorie Crusher</div>
+            <div style="font-size:9px; color:#334155; margin-top:2px; line-height:1.3;">Burn 500 cal in one session</div>
+          </div>
+
+          <!-- Locked -->
+          <div class="badge-card locked">
+            <div class="badge-lock-icon"><i class="fa-solid fa-lock"></i></div>
+            <div style="font-size:26px; margin-bottom:4px; filter:grayscale(1);">⚡</div>
+            <div style="font-size:10px; font-weight:700; color:#475569; line-height:1.2;">Century Ride</div>
+            <div style="font-size:9px; color:#334155; margin-top:2px; line-height:1.3;">Complete 100 total rides</div>
+          </div>
+
+          <!-- Locked -->
+          <div class="badge-card locked">
+            <div class="badge-lock-icon"><i class="fa-solid fa-lock"></i></div>
+            <div style="font-size:26px; margin-bottom:4px; filter:grayscale(1);">🏆</div>
+            <div style="font-size:10px; font-weight:700; color:#475569; line-height:1.2;">Iron Legs</div>
+            <div style="font-size:9px; color:#334155; margin-top:2px; line-height:1.3;">90+ RPM for 10 min</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- END ACHIEVEMENTS -->
+
+    <!-- Bottom Tab Bar — 5 tabs -->
     <div class="tab-bar" id="tabBar">
       <div class="tab-item active" id="tab-dashboard" onclick="switchTab('dashboard')">
         <i class="fa-solid fa-bicycle"></i>
@@ -921,6 +1188,10 @@
       <div class="tab-item" id="tab-history" onclick="switchTab('history')">
         <i class="fa-solid fa-clock-rotate-left"></i>
         <span>History</span>
+      </div>
+      <div class="tab-item" id="tab-awards" onclick="switchTab('awards')">
+        <i class="fa-solid fa-trophy"></i>
+        <span>Awards</span>
       </div>
       <div class="tab-item" id="tab-settings" onclick="switchTab('settings')">
         <i class="fa-solid fa-gear"></i>
@@ -942,8 +1213,7 @@
     }
 
     function switchTab(name) {
-      // Update tab highlights (only for main tabs)
-      const tabs = ['dashboard', 'laps', 'history', 'settings'];
+      const tabs = ['dashboard', 'laps', 'history', 'awards', 'settings'];
       tabs.forEach(t => {
         const el = document.getElementById('tab-' + t);
         if (el) el.classList.toggle('active', t === name);
@@ -957,7 +1227,6 @@
     }
 
     function showSessionDetail() {
-      // No tab highlight change — detail is a sub-screen of history
       showScreen('detail');
     }
 
@@ -1007,9 +1276,7 @@
       document.getElementById('duration-sub-label').style.color = d.subColor;
       document.getElementById('duration-sub-value').textContent = d.subValue;
       document.getElementById('duration-sub-value').style.color = d.subColor;
-      // Sub-panel border
       card.querySelector('.sub-panel').style.borderLeftColor = d.subColor;
-      // Other cards
       document.getElementById('hr-sub-label').textContent = d.hrSubLabel;
       document.getElementById('hr-sub-value').textContent = d.hrSubValue;
       document.getElementById('power-sub-label').textContent = d.powerSubLabel;
@@ -1022,23 +1289,96 @@
     function updateRHRVisibility() {
       const method = document.getElementById('hrMethodSelect').value;
       const rhrRow = document.getElementById('rhrRow');
-      rhrRow.style.opacity = method === 'karvonen' ? '1' : '0.4';
-      document.getElementById('rhrInput').disabled = method !== 'karvonen';
+      const isKarvonen = method === 'karvonen';
+      rhrRow.style.opacity = isKarvonen ? '1' : '0.4';
+      document.getElementById('rhrInput').disabled = !isKarvonen;
+    }
+
+    // ---- Settings: Appearance segmented toggle ----
+    function setAppearance(mode) {
+      document.getElementById('darkBtn').classList.toggle('active', mode === 'dark');
+      document.getElementById('lightBtn').classList.toggle('active', mode === 'light');
+    }
+
+    // ---- HR Zone Calculations ----
+    const ZONE_META = [
+      { name: 'Recovery',   pctLabel: '50–60%', color: '#94a3b8', bg: 'rgba(148,163,184,0.2)' },
+      { name: 'Endurance',  pctLabel: '60–70%', color: '#60a5fa', bg: 'rgba(96,165,250,0.2)'  },
+      { name: 'Aerobic',    pctLabel: '70–80%', color: '#34d399', bg: 'rgba(52,211,153,0.2)'  },
+      { name: 'Anaerobic',  pctLabel: '80–90%', color: '#fbbf24', bg: 'rgba(251,191,36,0.2)'  },
+      { name: 'Max Effort', pctLabel: '90–100%', color: '#f43f5e', bg: 'rgba(244,63,94,0.2)' },
+    ];
+    const ZONE_PCTS = [[0.50, 0.60], [0.60, 0.70], [0.70, 0.80], [0.80, 0.90], [0.90, 1.00]];
+
+    function calcZones(method, age, rhr) {
+      let maxHR;
+      if (method === 'traditional') {
+        maxHR = 220 - age;
+      } else if (method === 'tanaka') {
+        maxHR = Math.round(208 - 0.7 * age);
+      } else {
+        // Karvonen uses Traditional for maxHR
+        maxHR = 220 - age;
+      }
+
+      return ZONE_PCTS.map(([lo, hi]) => {
+        let low, high;
+        if (method === 'karvonen') {
+          const reserve = maxHR - rhr;
+          low  = Math.round(rhr + lo * reserve);
+          high = Math.round(rhr + hi * reserve);
+        } else {
+          low  = Math.round(maxHR * lo);
+          high = Math.round(maxHR * hi);
+        }
+        return { low, high };
+      });
+    }
+
+    function updateZones() {
+      const method = document.getElementById('hrMethodSelect').value;
+      const age    = parseInt(document.getElementById('ageInput').value) || 43;
+      const rhr    = parseInt(document.getElementById('rhrInput').value) || 60;
+      const zones  = calcZones(method, age, rhr);
+
+      // Update method badge label
+      const labels = {
+        traditional: 'Traditional (220 − Age)',
+        tanaka: 'Tanaka (208 − 0.7 × Age)',
+        karvonen: 'Karvonen (HR Reserve)',
+      };
+      document.getElementById('methodBadge').textContent = labels[method] + '  ·  Max HR ' + (method === 'tanaka' ? Math.round(208 - 0.7 * age) : (220 - age)) + ' BPM';
+
+      // Rebuild zone rows
+      const container = document.getElementById('zoneRows');
+      container.innerHTML = '';
+      zones.forEach((z, i) => {
+        const m = ZONE_META[i];
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex; align-items:center; gap:10px;';
+        row.innerHTML = `
+          <div style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:${m.bg};color:${m.color};">${i + 1}</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:600;color:${m.color};">${m.name}</div>
+            <div style="font-size:10px;color:#64748b;">${m.pctLabel}</div>
+          </div>
+          <div class="mono" style="font-size:13px;font-weight:700;color:${m.color};">${z.low}–${z.high} BPM</div>
+        `;
+        container.appendChild(row);
+      });
     }
 
     // ---- HR Zones Overlay ----
     function showHRZones() {
-      const overlay = document.getElementById('hrZonesOverlay');
-      overlay.classList.add('show');
+      updateZones();
+      document.getElementById('hrZonesOverlay').classList.add('show');
     }
 
     function hideHRZones() {
-      const overlay = document.getElementById('hrZonesOverlay');
-      overlay.classList.remove('show');
+      document.getElementById('hrZonesOverlay').classList.remove('show');
     }
 
     function handleOverlayClick(event) {
-      // Close if clicking backdrop (not the panel itself)
       if (!document.getElementById('hrZonesPanel').contains(event.target)) {
         hideHRZones();
       }
@@ -1046,6 +1386,8 @@
 
     // ---- Init ----
     applyDashboardData(TOTAL_DATA);
+    updateRHRVisibility();
+    updateZones();
   </script>
 </body>
 </html>
